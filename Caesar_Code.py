@@ -20,3 +20,7 @@ print(encoded_message)
 
 print(__name__)
 
+from PythonCore import *
+print(__name__)
+
+
