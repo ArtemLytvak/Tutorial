@@ -18,9 +18,10 @@ CATEGORIES = {"image": ['.JPEG', '.PNG', '.JPG', '.SVG'],
 def un_zip(path):
     for el in path.glob("**/*"):
         if el.suffix.upper() in CATEGORIES["archive"]:
-            parent_dir = el.parent
-            new_dir = parent_dir.joinpath(rf"{el.stem}")
+            # parent_dir = el.parent
+            new_dir = el.parent.joinpath(rf"{el.stem}")
             shutil.unpack_archive(el, new_dir)
+            os.remove(el)
 
 
 def normalize(file):
@@ -58,10 +59,10 @@ def sort_folder(path):
         if el.is_file():
             category = get_categories(el)
             move_file(el, category, path)
-            un_zip(path)
         if el.is_dir():
             if len(os.listdir(el)) == 0:
                 el.rmdir()
+    un_zip(path)
 
 def main():
     try:
