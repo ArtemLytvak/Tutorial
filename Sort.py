@@ -23,7 +23,6 @@ def un_zip(path):
             shutil.unpack_archive(el, new_dir)
             os.remove(el)
 
-
 def normalize(file):
     CYRILLIC_SYMBOLS = r"абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ "
     TRANSLATION = (
